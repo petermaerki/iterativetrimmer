@@ -1,8 +1,10 @@
 # Iterative Trimmer
 
-This page is deployed to: https://petermaerki.github.io/iterativetrimmer/
+Online Calculator: [petermaerki.github.io/iterativetrimmer](https://petermaerki.github.io/iterativetrimmer)
 
-An alternative approach to adjust something very accurate in electronic circuits by assembling fix value resistors instead of using trimmers or potentiometers.
+Repository: [github.com/petermaerki/iterativetrimmer](https://github.com/petermaerki/iterativetrimmer)
+
+**An alternative approach to adjust something very accurate in electronic circuits by assembling fix value resistors instead of using trimmers or potentiometers.**
 
 A resistor can be precisely tuned by placing additional resistors in parallel. We present a technique using 4
 parallel resistors, of which two are in series (A and B in schematic below). We use a potentiometer parallel to
@@ -22,7 +24,7 @@ Trimmers and Potentiometers are bulky, expensive and have a limited resolution. 
 The resistance is adjusted in mutliple iterations by measuring and assembling of fix value resistors.
 
 * Needed: Resistor set, thinfilm, E24, values from 10 Ohm to 1 Mohm.
-*Target value should be between 50 Ohm and 1 Mohm.
+* The target value should be between 50 Ohm and 1 Mohm.
 
 ### Example
 

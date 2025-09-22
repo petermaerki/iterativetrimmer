@@ -18,8 +18,8 @@
 </head>
 
 <body>
-
-    <section class="pyscript">
+    <div id="online_calculator">
+        <h1>Online calculator</h1>
         <table>
             <tbody>
                 <tr>
@@ -31,52 +31,35 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        Suggested fix value resistors
-                    </td>
-                    <td>
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td>Target resistance</td>
-                                    <td>
-                                        <div id="loesung_sollwert"></div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>A</td>
-                                    <td><b id="loesung_a"></b>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>B</td>
-                                    <td><b id="loesung_b"></b>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>C</td>
-                                    <td><b id="loesung_c"></b>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>D</td>
-                                    <td><b id="loesung_d"></b>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                    </td>
+                    <td>Suggested fix value resistors</td>
+                    <td>Target resistance: <b id="loesung_sollwert">...</b></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>A: <b id="loesung_a">...</b></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>B: <b id="loesung_b">...</b></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>C: <b id="loesung_c">...</b></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>D: <b id="loesung_d">...</b></td>
                 </tr>
 
+
                 <script type="py" src="./index.py" config="pyscript.toml"></script>
+
             </tbody>
         </table>
-    </section>
+    </div>
 
-    <hr>
-
-<div id="readme"></div>
+    <div id="readme"></div>
+    <script type="py" src="./index_readme.py" async></script>
 
 </body>
 
