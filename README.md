@@ -59,6 +59,7 @@ Trimmer P is adjusted until offset is zero.
 Trimmer is removed and resistance P is measured.
 
 Target resistance: 5700
+
 Result
 
 - A: 5600
@@ -79,6 +80,7 @@ Trimmer P is adjusted until offset is zero.
 Trimmer is removed and resistance P is measured.
 
 Target resistance: 830000
+
 Result
 
 - A: 820000
