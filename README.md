@@ -38,17 +38,17 @@ Trimmer P is connected temporary and adjusted until offset is zero. Trimmer is r
 
 Target resistance: 11203
 
-Result:
-    * A: 11000
-    * B: 220
-    * C: 12000
-    * D: 11000
+Result
+- A: 11000
+- B: 220
+- C: 12000
+- D: 11000
 
 ![](static/images/20.png)
 
 Assembling of resistors
-* A: 11000
-* B: 220
+- A: 11000
+- B: 220
 
 ![](static/images/30.png)
 
@@ -57,11 +57,11 @@ Trimmer P is adjusted until offset is zero.
 Trimmer is removed and resistance P is measured.
 
 Target resistance: 5700
-* Result:
-  * A: 5600
-  * B: 110
-  * C: 6200
-  * D: 5600<
+Result
+- A: 5600
+- B: 110
+- C: 6200
+- D: 5600<
 
 ![](static/images/40.png)
             
@@ -76,11 +76,11 @@ Trimmer P is adjusted until offset is zero.
 Trimmer is removed and resistance P is measured.
 
 Target resistance: 830000
-* Result:
-  * A: 820000
-  * B: 11000
-  * C: 910000
-  * D: 820000
+Result
+- A: 820000
+- B: 11000
+- C: 910000
+- D: 820000
 
 [](static/images/60.png)
         
@@ -124,19 +124,19 @@ A good trimmer would need more space on the pcb.
 
 This step is important and difficult. The reason to use a script.
 
-* By taking two resistors in serie, it is possible to make a very fine adjustment with C.
-* B has to be as small as possible to adjust very sensitive with C and D.
-* B hast to be big enough to be able to adjust the rest with C and D.
-* A and B have to be near the target value.
-* A and B have to be a bit biger than the target value.
+- By taking two resistors in serie, it is possible to make a very fine adjustment with C.
+- B has to be as small as possible to adjust very sensitive with C and D.
+- B hast to be big enough to be able to adjust the rest with C and D.
+- A and B have to be near the target value.
+- A and B have to be a bit biger than the target value.
 
 ### Next step: C
 
-* C hast to be a bit biger than the target.
+- C hast to be a bit biger than the target.
 
 ### Next step: D
 
-* D is picked to be as near to the target as possible.
+- D is picked to be as near to the target as possible.
 
 ## Why not simple put resistors in parallel?
 If you do this you end up at very high resistance values. Thinfilm resistors ar avaiable only up to 1 MOhm.
@@ -150,10 +150,10 @@ following steps.
 
 In the simulation you can see the relative error to the ramdomly choosen target value. (Target value for A and B)
 
-* Target values below 10 Ohm: not possible because we do not have that low fixed resistors.
-* Target values above 2 MOhm: not possible because we do not have that high fixed resistors.
-* Target values between 20 Ohm and 100 kOhm work quite well.
-* Sometimes the iteration get stuck, when the needed resistance value is to high. (red point on green point for example). This happens above an initial target value of 10 kOhm.
+- Target values below 10 Ohm: not possible because we do not have that low fixed resistors.
+- Target values above 2 MOhm: not possible because we do not have that high fixed resistors.
+- Target values between 20 Ohm and 100 kOhm work quite well.
+- Sometimes the iteration get stuck, when the needed resistance value is to high. (red point on green point for example). This happens above an initial target value of 10 kOhm.
     
 If you start with an initial resistor E and you can assemble resistors A, B, C and D you get the additional resistance to E about 1E-5 accurate. The value of E, A, B, C and D will be even more accurate, 1E-6 for example.
 
@@ -171,13 +171,11 @@ errors in the former steps will be corrected in the following steps.
 I developed this as i needed a solution. It fulfilled my requirement perfectly. It is possible
 there is an more efficient way to do it. Suggestions are welcome!
 
-<hr>
+
+
 
 Please feel free to optimize for your needs. Feedback is welcome!
 
 Peter Maerki, Zelglistrasse 49, 8634 Hombrechtikon, Switzerland.
 https://www.positron.ch/iterativetrimmer https://petermaerki.github.io/iterativetrimmer
 
-</body>
-
-</html>
