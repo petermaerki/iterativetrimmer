@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta name="description"
+        content="An alternative approach to adjust something very accurate in electronic circuits by assembling fix value resistors instead of using trimmers or potentiometers.">
+    <meta name="keywords"
+        content="IterativeTrimming Iterative Trimmer Potentiometer fix value accuracy resistor stability longterm adjusting amplifier low-noise precision error">
+    <link rel="stylesheet" href="static/images/css/style.css">
+
+    <!-- PyScript CSS -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2025.8.1/core.css">
+    <!-- This script tag bootstraps PyScript -->
+    <script type="module" src="https://pyscript.net/releases/2025.8.1/core.js"></script>
+
+    <title>IterativeTrimming Iterative adjustment with fix value resistor</title>
+</head>
+
+<body>
+
+    <section class="pyscript">
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <label for="resistance">Target resistance<br>(measured value of Potentiometer)</label>
+                    </td>
+                    <td> <input type="text" id="resistance" maxlength="10" value="20000">
+                        <button type="submit" py-click="do_calculate">Calculate</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Suggested fix value resistors
+                    </td>
+                    <td>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>Target resistance</td>
+                                    <td>
+                                        <div id="loesung_sollwert"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>A</td>
+                                    <td><b id="loesung_a"></b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>B</td>
+                                    <td><b id="loesung_b"></b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>C</td>
+                                    <td><b id="loesung_c"></b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>D</td>
+                                    <td><b id="loesung_d"></b>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </td>
+                </tr>
+
+                <script type="py" src="./index.py" config="pyscript.toml"></script>
+            </tbody>
+        </table>
+    </section>
+
+    <hr>
+
+<div id="readme"></div>
+
+</body>
+
+</html>
