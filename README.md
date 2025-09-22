@@ -23,8 +23,8 @@ Trimmers and Potentiometers are bulky, expensive and have a limited resolution. 
 
 The resistance is adjusted in mutliple iterations by measuring and assembling of fix value resistors.
 
-* Needed: Resistor set, thinfilm, E24, values from 10 Ohm to 1 Mohm.
-* The target value should be between 50 Ohm and 1 Mohm.
+- Needed: Resistor set, thinfilm, E24, values from 10 Ohm to 1 Mohm.
+- The target value should be between 50 Ohm and 1 Mohm.
 
 ### Example
 
@@ -61,7 +61,7 @@ Result
 - A: 5600
 - B: 110
 - C: 6200
-- D: 5600<
+- D: 5600
 
 ![](static/images/40.png)
             
@@ -102,6 +102,7 @@ Example: set of fix value resistors.
 ![](static/images/set_c.jpg)
 
 A device to speed up the trimming process. Switch to Rx, test-pins pressed on the circuit board, adjusting a trimmer. The range can be selected. Switch to Multimeter. Reading the resistance of the trimmer from the multimeter.
+
 ![](static/images/poti_a.jpg)
 
 ![](static/images/poti_b.jpg)
@@ -118,7 +119,7 @@ A good trimmer would need more space on the pcb.
 ![](static/images/pcb.png)
 
 
-## Some background information<
+## Some background information
 
 ### First step: two resistors A and B
 
@@ -154,7 +155,8 @@ In the simulation you can see the relative error to the ramdomly choosen target 
 - Target values above 2 MOhm: not possible because we do not have that high fixed resistors.
 - Target values between 20 Ohm and 100 kOhm work quite well.
 - Sometimes the iteration get stuck, when the needed resistance value is to high. (red point on green point for example). This happens above an initial target value of 10 kOhm.
-    
+
+
 If you start with an initial resistor E and you can assemble resistors A, B, C and D you get the additional resistance to E about 1E-5 accurate. The value of E, A, B, C and D will be even more accurate, 1E-6 for example.
 
 It is important to have good thinfilm resistors. I measured the typical error of 55 piece 10k resistors
