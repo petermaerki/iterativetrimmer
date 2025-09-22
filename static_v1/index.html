@@ -1,0 +1,218 @@
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta name="description" content="An alternative approach to adjust something very accurate in electronic circuits by assembling fix value resistors instead of using trimmers or potentiometers.">
+  <meta name="keywords" content="IterativeTrimming Iterative Trimmer Potentiometer fix value accuracy resistor stability longterm adjusting amplifier low-noise precision error">
+  <title>IterativeTrimming Iterative adjustment with fix value resistor</title>
+</head>
+
+
+<%
+import sys
+sys.path.append(os.path.dirname(req.canonical_filename))
+import iterativetrimmer
+
+import mod_python
+form = mod_python.util.FieldStorage(req, keep_blank_values=1)
+strTargetResitance = form.getfirst('resistance')
+if strTargetResitance == None:
+  strTargetResitance = '20000'
+
+sollwert = float(strTargetResitance)
+loesung = iterativetrimmer.widerstandermitteln(sollwert)
+#
+%>
+<h1>IterativeTrimmer</h1>
+<p>An alternative approach to adjust something very accurate in electronic circuits by assembling fix value resistors instead of using trimmers or potentiometers.
+<br>
+<br>
+A resistor can be precisely tuned by placing additional resistors in parallel. We present a technique using 4 parallel resistors, of which two are in series (A and B in schematic below). We use a potentiometer parallel to the existing resistor to get the target resistance, which will be placed next. We use this python script to successively determine the resistors A and B, then C, and later D. Depending on the initial error of resistor E, we reduce the error by two to three orders of magnitude by placing the resistors A and B, and one to two orders of magnitude each for C and D.</p>
+<hr />
+
+<table>
+<tr><td valign=top>
+<form action="<%=req.uri%>">
+    <label for="resistance">Target resistance<br>(measured value of Potentiometer)</label> 
+    </td><td valign=top><input type="text" name="resistance" id="resistance" maxlength="10" value="<%= strTargetResitance %>"> <button type="submit">Calculate</button></td>
+</form>
+
+<tr>
+<td valign=top><p>Suggested fix value resistors</p></td>
+
+<td>
+<!--Tabelle in Tabelle kommt-->
+<table>
+  <tr><td>Target resistance</td><td><%= int(loesung['sollwert']) %></td></tr>
+  <tr><td>A</td><td><b><%= int(loesung['a']) %></b></td></tr>
+  <tr><td>B</td><td><b><%= int(loesung['b']) %></b></td></tr>
+  <tr><td>C</td><td><b><%= int(loesung['c']) %></b></td></tr>
+  <tr><td>D</td><td><b><%= int(loesung['d']) %></b></td></tr>
+</table>
+
+</td>
+</tr>
+
+</table>
+
+<hr/>
+
+<h3>Why?</h3>
+<p>Trimmers and Potentiometers are bulky, expensive and have a limited resolution. In addition cermet trimmers show a lot of flicker noise. If you need something really stable, this approach could be something for you.
+
+<h3>How is it done?</h3>
+The resistance is adjusted in mutliple iterations by measuring and assembling of fix value resistors.<br>
+Needed: Resistor set, thinfilm, E24, values from 10 Ohm to 1 Mohm.<br>
+Target value should be between 50 Ohm and 1 Mohm.<br>
+</p>
+
+<h3>Example</h3>
+ <table>
+  <tr>
+    <td><img src="10.png"></td>
+    <td>Resistor E is assembled (optional). Offset has
+to be adjusted by reducing the total resistance. The resistor is a part of a circuit where the optimal point can be measured. Let's assume it is an offset of an amplifier.</td>
+    
+  </tr>
+  <tr>
+    <td><img src="20.png"></td>
+    <td>Trimmer P is connected temporary and adjusted until offset is zero.
+Trimmer is removed and resistance P is measured.<br>
+<br>
+Target resistance: 11203<br>
+Result: <br>
+A: 11000<br>
+B: 220<br>
+C: 12000<br>
+D: 11000<br>
+</td>
+    
+  </tr>
+    <tr>
+    <td><img src="30.png"></td>
+    <td>Assembling of resistors <br>
+A: 11000<br>
+B: 220</td>
+    
+  </tr>
+    <tr>
+    <td><img src="40.png"></td>
+    <td>Trimmer P is adjusted until offset is zero.<br>
+Trimmer is removed and resistance P is measured.<br>
+Target resistance: 5700<br>
+Result: <br>
+A: 5600<br>
+B: 110<br>
+C: 6200<br>
+D: 5600</td>
+    
+  </tr>
+    <tr>
+    <td><img src="50.png"></td>
+    <td>Assembling of resistor
+C: 6200</td>
+    
+  </tr>
+    <tr>
+    <td><img src="60.png"></td>
+    <td>Trimmer P is adjusted until offset is zero.<br>
+Trimmer is removed and resistance P is measured.<br>
+Target resistance: 830000<br>
+Result: <br>
+A: 820000<br>
+B: 11000<br>
+C: 910000<br>
+D: 820000</td>
+    
+  </tr>
+    <tr>
+    <td><img src="70.png"></td>
+    <td>Assembling of resistor<br>
+D: 820000</td>
+    
+  </tr>
+</table> 
+<hr/>
+
+
+<table>
+  <tr>
+    <td><img src="set_b.jpg" width="800"></td>
+    <td>Example: set of fix value resistors.</td>
+  </tr>
+  <tr>
+    <td><img src="set_a.jpg" width="800"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><img src="set_c.jpg" width="800"></td>
+    <td></td>
+  </tr>
+   <tr>
+    <td><img src="poti_a.jpg" width="800"></td>
+    <td>A device to speed up the trimming process. Switch to Rx, test-pins pressed on the circuit board, adjusting a trimmer. The range can be selected. Switch to Multimeter. Reading the resistance of the trimmer from the multimeter.</td>
+  </tr>
+  <tr>
+    <td><img src="poti_b.jpg" width="800"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><img src="pcb.png" width="800"></td>
+    <td>An example of a circuit board.<br>
+	R11 and R111 are assembled initialy to make the circuit working. <br>
+	According to the initial offset the left  side R11 or the right side R111 has to be reduced.<br>
+	The yellow letters show an adjustment of the left side. <br><br>
+	A good trimmer would need more space on the pcb.</td>
+  </tr>
+</table>
+<hr/>
+
+<h2>Some background information</h2>
+<h3>First step: two resistors A and B</h3>
+This step is important and difficult. The reason to use a script.
+<li>By taking two resistors in serie, it is possible to make a very fine adjustment with C.
+<li>B has to be as small as possible to adjust very sensitive with C and D.
+<li>B hast to be big enough to be able to adjust the rest with C and D.
+<li>A and B have to be near the target value.
+<li>A and B have to be a bit biger than the target value.
+
+<h3>Next step: C</h3>
+<li>C hast to be a bit biger than the target.
+
+<h3>Next step: D</h3>
+<li>D is picked to be as near to the target as possible.
+
+<h3>Why not simple put resistors in parallel?</h3>
+<p>If you do this you end up at very high resistance values. Thinfilm resistors ar avaiable only up to 1 MOhm. By assembling two in the first step, you get a more accurate first step and less sensibility in the following steps.</p>
+
+<h3>How accurate is the adjustment?</h3>
+
+<img src="20170524b_auswertung.png" width="800">
+<p>In the simulation you can see the relative error to the ramdomly choosen target value. (Target value for A and B)<br>
+<li>Target values below 10 Ohm: not possible because we do not have that low fixed resistors.
+<li>Target values above 2 MOhm: not possible because we do not have that high fixed resistors.
+<li>Target values between 20 Ohm and 100 kOhm work quite well.
+<li>Sometimes the iteration get stuck, when the needed resistance value is to high. (red point on green point for example). This happens above an initial target value of 10 kOhm.
+<br>
+If you start with an initial resistor E and you can assemble resistors A, B, C and D you get the additional resistance to E about 1E-5 accurate. The value of E, A, B, C and D will be even more accurate, 1E-6 for example.<br>
+</p>
+<p>
+It is important to have good thinfilm resistors. I measured the typical error of 55 piece 10k resistors (ERA6A) and got a maximum error of 0.015% from 10kOhm. This tolerance is used in the python script.
+</p>
+ 
+<h3>Why iterative and not in one step?</h3>
+ <p>
+Consider the tolerance of the multimeter used to measure the trimmer P and the limited accuracy of the fix value resistors and the possible change of the resistance value due to soldering. By doing it iterative, errors in the former steps will be corrected in the following steps.
+</p>
+<h3>Is there a better concept for iterative trimming than the shown here?</h3>
+ <p>
+I developed this concept because i needed a solution. It fulfilled my requirement perfectly. It is possible there is an more efficient way to do it. Suggestions are welcome!
+ </p>
+ <hr/>
+<a target="_blank" href="iterativetrimmer.py">The inner workings, python script.</a><br>
+Please feel free to optimize for your needs.
+<a target="_blank" href="http://www.maerki.com/peter/privatmail">Feedback</a> is welcome!<br>
+Peter Maerki, Zelglistrasse 49, 8634 Hombrechtikon, Switzerland.<br>
+www.positron.ch/iterativetrimmer
+
+</html>

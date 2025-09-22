@@ -1,0 +1,33 @@
+<html>
+<%
+import sys
+sys.path.append(os.path.dirname(req.canonical_filename))
+import iterativetrimmer
+
+import mod_python
+form = mod_python.util.FieldStorage(req, keep_blank_values=1)
+strTargetResitance = form.getfirst('resistance')
+if strTargetResitance == None:
+  strTargetResitance = '20000'
+
+sollwert = float(strTargetResitance)
+loesung = iterativetrimmer.widerstandermitteln(sollwert, iterativetrimmer.widerstandswerte)
+#
+%>
+<p>TargetResitance= <%= strTargetResitance %></p> 
+<form action="<%=req.uri%>">
+    <label for="resistance">Target Resistance</label> 
+    <input type="text" name="resistance" id="resistance" maxlength="30" value="<%= strTargetResitance %>">
+ 
+    <button type="reset">Reset</button>
+    <button type="submit">Calculate</button>
+</form>
+<h2>Loesung</h2>
+<table>
+  <tr><td>Sollwert</td><td><%= int(loesung['sollwert']) %></td></tr>
+  <tr><td>A</td><td><%= int(loesung['a']) %></td></tr>
+  <tr><td>B</td><td><%= int(loesung['b']) %></td></tr>
+  <tr><td>C</td><td><%= int(loesung['c']) %></td></tr>
+  <tr><td>D</td><td><%= int(loesung['d']) %></td></tr>
+</table>
+</html>

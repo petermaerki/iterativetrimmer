@@ -1,0 +1,128 @@
+<html>
+
+<form action="/iterativetrimmer/index.html">
+  <p>
+    <label for="resistance">Target Resistance</label> 
+    <input type="text" name="resistance" id="resistance" maxlength="10" value="11203">
+  </p>
+  <p>
+    <button type="submit">Calculate</button></td></tr>
+  </p>
+</form>
+<h2>Solution</h2>
+<table>
+  <tr><td>Target Resistance</td><td>11203</td></tr>
+  <tr><td>A</td><td>11000</td></tr>
+  <tr><td>B</td><td>220</td></tr>
+  <tr><td>C</td><td>12000</td></tr>
+  <tr><td>D</td><td>11000</td></tr>
+</table>
+
+
+
+<p>
+Resistance adjustig in mutliple iterations by measuring and assembling of fix value resistors.<br>
+Needed: Resistor set, thinfilm, E24, values from 10 Ohm to 1 Mohm.<br>
+Target value should be between 50 Ohm and 1 Mohm.<br>
+Peter Maerki, Zelglistrasse 49, 8634 Hombrechtikon, Switzerland.<br>
+<a target="_blank" href="http://www.maerki.com/peter/privatmail">Feedback</a> is welcome!<br>
+Please feel free to optimize for your needs.
+
+<a target="_blank" href="iterativetrimmer.py">The inner workings, python script.</a>
+</p>
+
+ <table>
+  <tr>
+    <td><img src="10.png"></td>
+    <td>Resistor E is assembled (optional). Offset has
+to be adjusted by reducing the total resistance.</td>
+    
+  </tr>
+  <tr>
+    <td><img src="20.png"></td>
+    <td>Trimmer P is adjusted until offset is zero.
+Trimmer is removed and resistance P is measured.<br>
+Target resistance: 11203<br>
+Result: <br>
+A: 11000<br>
+B: 220<br>
+C: 12000<br>
+D: 11000<br>
+</td>
+    
+  </tr>
+    <tr>
+    <td><img src="30.png"></td>
+    <td>Assembling of resistors <br>
+A: 11000<br>
+B: 220</td>
+    
+  </tr>
+    <tr>
+    <td><img src="40.png"></td>
+    <td>Trimmer P is adjusted until offset is zero.<br>
+Trimmer is removed and resistance P is measured.<br>
+Target resistance: 5700<br>
+Result: <br>
+A: 5600<br>
+B: 110<br>
+C: 6200<br>
+D: 5600</td>
+    
+  </tr>
+    <tr>
+    <td><img src="50.png"></td>
+    <td>Assembling of resistor
+C: 6200</td>
+    
+  </tr>
+    <tr>
+    <td><img src="60.png"></td>
+    <td>Trimmer P is adjusted until offset is zero.<br>
+Trimmer is removed and resistance P is measured.<br>
+Target resistance: 830000<br>
+Result: <br>
+A: 820000<br>
+B: 11000<br>
+C: 910000<br>
+D: 820000</td>
+    
+  </tr>
+    <tr>
+    <td><img src="70.png"></td>
+    <td>Assembling of resistor<br>
+D: 820000</td>
+    
+  </tr>
+</table> 
+
+<table>
+  <tr>
+    <td><img src="set_a.jpg"></td>
+    <td>Assembling of resistor<br></td>
+  </tr>
+  <tr>
+    <td><img src="set_b.jpg"></td>
+    <td>Assembling of resistor<br></td>
+  </tr>
+  <tr>
+    <td><img src="set_c.jpg"></td>
+    <td>Assembling of resistor<br></td>
+  </tr>
+   <tr>
+    <td><img src="poti_a.jpg"></td>
+    <td>Assembling of resistor<br></td>
+  </tr>
+  <tr>
+    <td><img src="poti_b.jpg"></td>
+    <td>Assembling of resistor<br></td>
+  </tr>
+  <tr>
+    <td><img src="pcb.png"></td>
+    <td>Assembling of resistor<br></td>
+  </tr>
+</table>
+
+Resistors A, B and C are calculated to be a bit to big, enabling further trimming. Resistor D is calculated to be as precise as possible.<br>
+
+</html>
