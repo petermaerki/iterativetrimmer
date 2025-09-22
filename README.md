@@ -39,6 +39,7 @@ Trimmer P is connected temporary and adjusted until offset is zero. Trimmer is r
 Target resistance: 11203
 
 Result
+
 - A: 11000
 - B: 220
 - C: 12000
@@ -47,6 +48,7 @@ Result
 ![](static/images/20.png)
 
 Assembling of resistors
+
 - A: 11000
 - B: 220
 
@@ -58,6 +60,7 @@ Trimmer is removed and resistance P is measured.
 
 Target resistance: 5700
 Result
+
 - A: 5600
 - B: 110
 - C: 6200
@@ -77,6 +80,7 @@ Trimmer is removed and resistance P is measured.
 
 Target resistance: 830000
 Result
+
 - A: 820000
 - B: 11000
 - C: 910000
